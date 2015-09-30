@@ -10,31 +10,31 @@
 	<string>RainbowPlayground</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5DA2869D486A9CD8F92CA220816A8F4EA61B4D36</key>
-		<string>https://github.com/izotx/twoKApp.git</string>
+		<key>D8DB76E5168F5E1FE0E48073E54BF24750D7375D</key>
+		<string>https://github.com/izotx/JMCRainbow.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>twoKApp/RainbowPlayground.playground</string>
+	<string>RainbowPlayground.playground</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5DA2869D486A9CD8F92CA220816A8F4EA61B4D36</key>
-		<string>../..</string>
+		<key>D8DB76E5168F5E1FE0E48073E54BF24750D7375D</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/izotx/twoKApp.git</string>
+	<string>https://github.com/izotx/JMCRainbow.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5DA2869D486A9CD8F92CA220816A8F4EA61B4D36</string>
+	<string>D8DB76E5168F5E1FE0E48073E54BF24750D7375D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5DA2869D486A9CD8F92CA220816A8F4EA61B4D36</string>
+			<string>D8DB76E5168F5E1FE0E48073E54BF24750D7375D</string>
 			<key>IDESourceControlWCCName</key>
-			<string>twoKApp</string>
+			<string>JMCRainbow</string>
 		</dict>
 	</array>
 </dict>

@@ -1,6 +1,14 @@
-/**Rainbow created by Janusz Chudzynski
+/**JMCRainbow 
+
+    Copyright  by Janusz Chudzynski
+    Website:izotx.com
+    Email: janusz@izotx.com 
+
     UIKit Method that can be used to generate the rainbow uiimage based on hue
     Extension to UIView to produce rainbow background to anything and everything
+    
+    Feel free to use in your projects as long as you keep my contact information.
+
 */
 
 import UIKit
@@ -45,6 +53,8 @@ extension UIView{
 
 }
 
+
+/*Example of using it in your code*/
 let v = UIView(frame: CGRectMake(0, 0, 1000, 1000))
 v.rainbowBackground()
 
