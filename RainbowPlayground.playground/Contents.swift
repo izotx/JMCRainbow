@@ -4,7 +4,7 @@
     Website:izotx.com
     Email: janusz@izotx.com 
 
-    UIKit Method that can be used to generate the rainbow uiimage based on hue
+    UIImage Extensionthat can be used to generate the rainbow uiimage based on hue.
     Extension to UIView to produce rainbow background to anything and everything
     
     Feel free to use in your projects as long as you keep my contact information.
@@ -12,6 +12,7 @@
 */
 
 import UIKit
+import CoreImage
 
 extension UIImage{
     
@@ -39,12 +40,48 @@ extension UIImage{
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         
-        
         UIGraphicsEndImageContext()
         return image
-        
     }
+
+//    static func  generateRainbowWithCoreImage(size:CGSize,segments:Int){
+//        let filter = CIFilter(name: "CIHueAdjust")
+//        println(filter)
+//        
+//        filter.setDefaults()
+//        let min = Float(-M_PI)
+//        let max = Float(M_PI)
+//        let steps = Int( max + abs(min))
+//        let step = steps/1000
+//        
+//        UIGraphicsBeginImageContext(size)
+//        let context = UIGraphicsGetCurrentContext()
+//        let segmentWidth = size.width / CGFloat(segments)
+//        for var i:Int = 0; i < segments; i = i+1{
+//            
+//            let current = CGFloat(min) + max * CGFloat(i)/CGFloat(segments);
+//            
+//            //generate color
+//            let currentHue = CGFloat(i)/CGFloat(1000)
+//            let color =  UIColor(hue: currentHue, saturation: 1, brightness: 1, alpha: 1.0)
+//            //current x offset
+//            let currentx:CGFloat = size.width * CGFloat(i) / CGFloat(segments)
+//            
+//            CGContextSetFillColorWithColor(context, color.CGColor)
+//            CGContextFillRect(context, CGRectMake(currentx, 0, segmentWidth, size.height))
+//        }
+//
+//        UIGraphicsEndImageContext()
+//        
+//    }
+    
+    
+    
 }
+
+
+let filter = CIFilter(name: "CIHueAdjust")
+println(filter.attributes())
 
 
 
@@ -59,12 +96,16 @@ extension UIView{
 let v = UIView(frame: CGRectMake(0, 0, 1000, 1000))
 v.rainbowBackground()
 
-let slider = UISlider(frame: CGRectMake(0, 0, 100, 10))
+let slider = UISlider(frame: CGRectMake(0, 0, 100, 40))
 //slider.rainbowBackground()
-let rainbow = UIImage.generateRainbow(CGSizeMake(slider.frame.width, 2), segments: 1000).stretchableImageWithLeftCapWidth(7, topCapHeight: 0)
+let rainbow = UIImage.generateRainbow(CGSizeMake(slider.frame.width, 2), segments: 1000).stretchableImageWithLeftCapWidth(3, topCapHeight: 0)
 
 
 slider.setMinimumTrackImage(rainbow, forState: UIControlState.Normal)
 slider.setMaximumTrackImage(rainbow, forState: UIControlState.Normal)
+
+
+
+UIImage.generateRainbowWithCoreImage(CGSizeMake(100,3), segments: 1000)
 
 
