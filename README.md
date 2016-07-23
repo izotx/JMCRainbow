@@ -3,14 +3,18 @@ UIKit Method that can be used to generate the rainbow UIImage based on hue Exten
 
 ### Sample Usage
 #### Slider
-<img src="slider.png">
+<img src="slider.png" width="49%">
 
 #### Background
-<img src="rainbow.png">
+<img src="rainbow.png" width="49%">
 
 
 Feel free to use in your projects as long as you keep my contact information.
+
 Copyright  by Janusz Chudzynski
+
 Website:izotx.com
+
 Email: janusz@izotx.com 
+
 Twitter: @appzzman
