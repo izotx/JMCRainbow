@@ -44,44 +44,47 @@ extension UIImage{
         return image
     }
 
-//    static func  generateRainbowWithCoreImage(size:CGSize,segments:Int){
-//        let filter = CIFilter(name: "CIHueAdjust")
-//        println(filter)
-//        
-//        filter.setDefaults()
-//        let min = Float(-M_PI)
-//        let max = Float(M_PI)
-//        let steps = Int( max + abs(min))
-//        let step = steps/1000
-//        
-//        UIGraphicsBeginImageContext(size)
-//        let context = UIGraphicsGetCurrentContext()
-//        let segmentWidth = size.width / CGFloat(segments)
-//        for var i:Int = 0; i < segments; i = i+1{
-//            
-//            let current = CGFloat(min) + max * CGFloat(i)/CGFloat(segments);
-//            
-//            //generate color
-//            let currentHue = CGFloat(i)/CGFloat(1000)
-//            let color =  UIColor(hue: currentHue, saturation: 1, brightness: 1, alpha: 1.0)
-//            //current x offset
-//            let currentx:CGFloat = size.width * CGFloat(i) / CGFloat(segments)
-//            
-//            CGContextSetFillColorWithColor(context, color.CGColor)
-//            CGContextFillRect(context, CGRectMake(currentx, 0, segmentWidth, size.height))
-//        }
-//
-//        UIGraphicsEndImageContext()
-//        
-//    }
+    static func  generateRainbowWithCoreImage(size:CGSize,segments:Int)->UIImage?{
+        guard let filter = CIFilter(name: "CIHueAdjust") else{
+            print("CIHueAdjust doesn't exist")
+            return nil
+        }
+        
+      //  filter.setDefaults()
+       // let min = CGFloat(-M_PI)
+       // let max = CGFloat(M_PI)
+      //  let steps =  max + abs(min)
+  //      let step = steps/CGFloat(segments)
+        
+        UIGraphicsBeginImageContext(size)
+        let context = UIGraphicsGetCurrentContext()
+        let segmentWidth = size.width / CGFloat(segments)
+        for var i:Int = 0; i < segments; i = i+1{
+            
+    //        let current = CGFloat(min) + max * CGFloat(i)/CGFloat(segments);
+            
+            //generate color
+            let currentHue = CGFloat(i)/CGFloat(segments)
+            let color =  UIColor(hue: currentHue, saturation: 1, brightness: 1, alpha: 1.0)
+            //current x offset
+            let currentx:CGFloat = size.width * CGFloat(i) / CGFloat(segments)
+            
+            CGContextSetFillColorWithColor(context, color.CGColor)
+            CGContextFillRect(context, CGRectMake(currentx, 0, segmentWidth, size.height))
+        }
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        return image
+    }
     
     
     
 }
 
-
-let filter = CIFilter(name: "CIHueAdjust")
-println(filter.attributes())
+//
+//let filter = CIFilter(name: "CIHueAdjust")
+//print(filter!.attributes())
 
 
 
@@ -106,6 +109,10 @@ slider.setMaximumTrackImage(rainbow, forState: UIControlState.Normal)
 
 
 
-UIImage.generateRainbowWithCoreImage(CGSizeMake(100,3), segments: 1000)
+if let image = UIImage.generateRainbowWithCoreImage(CGSizeMake(320,600), segments: 2000){
+  image
+
+}
+
 
 
