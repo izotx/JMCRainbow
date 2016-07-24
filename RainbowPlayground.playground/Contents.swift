@@ -21,7 +21,7 @@ extension UIImage{
     segments: number of segments in the hue
     */
     
-    static func generateRainbow(size:CGSize, segments:Int)->UIImage{
+    static func generateRainbow(size:CGSize, segments:Int)->UIImage?{
         let segmentWidth = size.width / CGFloat(segments)
         
         UIGraphicsBeginImageContext(size)
@@ -44,39 +44,29 @@ extension UIImage{
         return image
     }
 
-    static func  generateRainbowWithCoreImage(size:CGSize,segments:Int)->UIImage?{
-        guard let filter = CIFilter(name: "CIHueAdjust") else{
-            print("CIHueAdjust doesn't exist")
-            return nil
-        }
-        
-      //  filter.setDefaults()
-       // let min = CGFloat(-M_PI)
-       // let max = CGFloat(M_PI)
-      //  let steps =  max + abs(min)
-  //      let step = steps/CGFloat(segments)
-        
-        UIGraphicsBeginImageContext(size)
-        let context = UIGraphicsGetCurrentContext()
-        let segmentWidth = size.width / CGFloat(segments)
-        for var i:Int = 0; i < segments; i = i+1{
-            
-    //        let current = CGFloat(min) + max * CGFloat(i)/CGFloat(segments);
-            
-            //generate color
-            let currentHue = CGFloat(i)/CGFloat(segments)
-            let color =  UIColor(hue: currentHue, saturation: 1, brightness: 1, alpha: 1.0)
-            //current x offset
-            let currentx:CGFloat = size.width * CGFloat(i) / CGFloat(segments)
-            
-            CGContextSetFillColorWithColor(context, color.CGColor)
-            CGContextFillRect(context, CGRectMake(currentx, 0, segmentWidth, size.height))
-        }
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        return image
-    }
+//    static func  generateRainbowWithCoreImage(size:CGSize,segments:Int)->UIImage?{
+//        
+//        UIGraphicsBeginImageContext(size)
+//        let context = UIGraphicsGetCurrentContext()
+//        let segmentWidth = size.width / CGFloat(segments)
+//        for var i:Int = 0; i < segments; i = i+1{
+//            
+//    //        let current = CGFloat(min) + max * CGFloat(i)/CGFloat(segments);
+//            
+//            //generate color
+//            let currentHue = CGFloat(i)/CGFloat(segments)
+//            let color =  UIColor(hue: currentHue, saturation: 1, brightness: 1, alpha: 1.0)
+//            //current x offset
+//            let currentx:CGFloat = size.width * CGFloat(i) / CGFloat(segments)
+//            
+//            CGContextSetFillColorWithColor(context, color.CGColor)
+//            CGContextFillRect(context, CGRectMake(currentx, 0, segmentWidth, size.height))
+//        }
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        
+//        UIGraphicsEndImageContext()
+//        return image
+//    }
     
     
     
@@ -90,7 +80,7 @@ extension UIImage{
 
 extension UIView{
     func rainbowBackground(){
-        self.backgroundColor = UIColor(patternImage: UIImage.generateRainbow(self.frame.size, segments: 1000))
+        self.backgroundColor = UIColor(patternImage: UIImage.generateRainbow(self.frame.size, segments: 1000)!)
     }
 }
 
@@ -101,7 +91,7 @@ v.rainbowBackground()
 
 let slider = UISlider(frame: CGRectMake(0, 0, 100, 40))
 //slider.rainbowBackground()
-let rainbow = UIImage.generateRainbow(CGSizeMake(slider.frame.width, 2), segments: 1000).stretchableImageWithLeftCapWidth(3, topCapHeight: 0)
+let rainbow = UIImage.generateRainbow(CGSizeMake(slider.frame.width, 2), segments: 1000)!.stretchableImageWithLeftCapWidth(3, topCapHeight: 0)
 
 
 slider.setMinimumTrackImage(rainbow, forState: UIControlState.Normal)
@@ -109,7 +99,7 @@ slider.setMaximumTrackImage(rainbow, forState: UIControlState.Normal)
 
 
 
-if let image = UIImage.generateRainbowWithCoreImage(CGSizeMake(320,600), segments: 2000){
+if let image = UIImage.generateRainbow(CGSizeMake(320,600), segments: 2000){
   image
 
 }
